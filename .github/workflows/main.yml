@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # v1.0.0과 같은 태그가 푸시될 때 트리거
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # 2. Set up Go
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: '1.20'  # Go 버전 설정
+
+    # 3. Install Goreleaser
+    - name: Install Goreleaser
+      run: |
+        curl -s https://raw.githubusercontent.com/goreleaser/goreleaser/master/install.sh | bash
+
+    # 4. Run Goreleaser to build binaries
+    - name: Run Goreleaser
+      run: goreleaser release --rm-dist
+
+    # 5. Create a zip file of the generated binaries
+    - name: Create zip file
+      run: |
+        mkdir release_assets
+        # Assume goreleaser creates binaries in dist/
+        for file in dist/*; do
+          zip -r release_assets/$(basename "$file").zip "$file"
+        done
+
+    # 6. Upload release assets
+    - name: Upload release assets
+      uses: softprops/action-gh-release@v1
+      with:
+        files: release_assets/*.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
