@@ -22,7 +22,7 @@ jobs:
 
     # 3. GoReleaser Action
     - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@v5.1.0
+      uses: goreleaser/goreleaser-action@v6
       with:
         version: latest  # 최신 버전의 GoReleaser 사용
         args: release --rm-dist  # release 명령어에 필요한 인자 전달
