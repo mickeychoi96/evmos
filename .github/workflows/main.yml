@@ -29,6 +29,8 @@ jobs:
       with:
         version: latest  # 최신 버전의 GoReleaser 사용
         args: release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # 4. Upload release assets
     - name: Upload release assets
