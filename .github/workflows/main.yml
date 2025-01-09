@@ -20,11 +20,6 @@ jobs:
       with:
         go-version: '1.20'  # Go 버전 설정
 
-    # 3. Install Goreleaser
-    - name: Install Goreleaser
-      run: |
-        curl -sfL https://goreleaser.com/static/run | bash VERSION=v2.5.1 -s -- check
-
     # 4. Run Goreleaser to build binaries
     - name: Run Goreleaser
       run: goreleaser release --rm-dist
