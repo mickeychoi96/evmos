@@ -21,6 +21,8 @@ jobs:
         with:
           go-version: '1.22'
           check-latest: true
+      - name: Check disk space
+        run: df -h
       - name: setup release environment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
