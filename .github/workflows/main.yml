@@ -3,7 +3,9 @@ name: Release
 on:
   push:
     tags:
-      - 'v*' 
+      - 'v*'
+permissions: read-all
+
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
