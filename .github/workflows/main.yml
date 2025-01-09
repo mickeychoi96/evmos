@@ -31,11 +31,3 @@ jobs:
         echo 'GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}' > .release-env
     - name: release publish
       run: make release
-
-    # 4. Upload release assets
-    - name: Upload release assets
-      uses: softprops/action-gh-release@v1
-      with:
-        files: dist/*.zip  # GoReleaser에서 생성된 zip 파일 업로드
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
