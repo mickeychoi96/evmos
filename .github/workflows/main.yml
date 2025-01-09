@@ -23,7 +23,7 @@ jobs:
     # 3. Install Goreleaser
     - name: Install Goreleaser
       run: |
-        curl -s https://raw.githubusercontent.com/goreleaser/goreleaser/master/install.sh | bash
+        curl -sfL https://goreleaser.com/static/run | bash VERSION=v2.5.1 -s -- check
 
     # 4. Run Goreleaser to build binaries
     - name: Run Goreleaser
