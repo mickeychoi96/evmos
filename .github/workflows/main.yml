@@ -21,6 +21,8 @@ jobs:
         with:
           go-version: '1.22'
           check-latest: true
+      - name: Docker Root Dir
+        run: docker info | grep "Docker Root Dir"
       - name: Check disk space
         run: df -h
       - name: setup release environment
