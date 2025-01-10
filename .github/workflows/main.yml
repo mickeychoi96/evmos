@@ -21,8 +21,6 @@ jobs:
         with:
           go-version: '1.22'
           check-latest: true
-      - name: Docker Root Dir
-        run: docker info | grep "Docker Root Dir"
       - name: Remove unnecessary files
         run: |
           sudo rm -rf /usr/share/dotnet
