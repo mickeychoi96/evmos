@@ -24,7 +24,7 @@ jobs:
       - name: Docker Root Dir
         run: docker info | grep "Docker Root Dir"
       - name: Check disk space
-        run: df -h
+        run: du -sh /var/lib/docker
       - name: setup release environment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
